@@ -2,11 +2,9 @@
 > Enhanced signed URLs for Laravel, including attaching data, click limits and expiry.
 
 <!-- PROJECT SHIELDS -->
-[![Build Status][build-shield]]()
-[![Contributors][contributors-shield]]()
-[![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-
+[![Build Status](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/build-status/develop)
+[![Code Coverage](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/?branch=develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/?branch=develop)
 ## Table of Contents
 
 * [About the Project](#about-the-project)
@@ -34,12 +32,6 @@
 
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-
-
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -61,10 +53,4 @@ Toby Twigger - [toby@linkeys.app](mailto:toby@linkeys.app)
 
 Project Link: [https://github.com/linkeys-app/signed-url](https://github.com/linkeys-app/signed-url)
 
-[build-shield]: https://img.shields.io/badge/build-passing-brightgreen.svg?style=flat-square
-[contributors-shield]: https://img.shields.io/badge/contributors-1-orange.svg?style=flat-square
-[license-shield]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
-[license-url]: https://choosealicense.com/licenses/mit
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/screenshot.png

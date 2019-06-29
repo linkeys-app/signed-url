@@ -8,7 +8,7 @@ use Linkeys\LinkGenerator\Models\Group;
 use Linkeys\LinkGenerator\Models\Link;
 use Linkeys\LinkGenerator\Support\GroupRepository\EloquentGroupRepository;
 use Linkeys\LinkGenerator\Support\LinkRepository\EloquentLinkRepository;
-use Linkeys\LinkGenerator\Support\UrlManipulator\httpUrlManipulator;
+use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
 use Linkeys\LinkGenerator\Tests\TestCase;
 
 class LinkGeneratorTest extends TestCase
@@ -24,7 +24,7 @@ class LinkGeneratorTest extends TestCase
         $this->links = new LinkGenerator(
             new EloquentLinkRepository(new Link),
             new EloquentGroupRepository(new Group),
-            new httpUrlManipulator
+            new SpatieUrlManipulator
         );
     }
 

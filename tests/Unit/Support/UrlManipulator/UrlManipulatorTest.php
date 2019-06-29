@@ -4,7 +4,7 @@
 namespace Linkeys\LinkGenerator\Tests\Unit\Support\UrlManipulator;
 
 use Linkeys\LinkGenerator\Tests\TestCase;
-use Linkeys\LinkGenerator\Support\UrlManipulator\httpUrlManipulator;
+use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
 
 class UrlManipulatorTest extends TestCase
 {
@@ -13,7 +13,7 @@ class UrlManipulatorTest extends TestCase
 
     public function setUp(): void
     {
-        $this->url = 'https://example.com/?foo=bar';
+        $this->url = 'https://example.com?foo=bar';
     }
 
     /**
@@ -21,8 +21,8 @@ class UrlManipulatorTest extends TestCase
      */
     public function url_manipulator_can_be_instantiated()
     {
-        $urlInterface = new httpUrlManipulator;
-        $this->assertInstanceOf(httpUrlManipulator::class, $urlInterface);
+        $urlInterface = new SpatieUrlManipulator;
+        $this->assertInstanceOf(SpatieUrlManipulator::class, $urlInterface);
     }
 
     /**
@@ -30,7 +30,7 @@ class UrlManipulatorTest extends TestCase
      */
     public function url_manipulator_can_accept_and_return_a_url()
     {
-        $urlInterface = new httpUrlManipulator;
+        $urlInterface = new SpatieUrlManipulator;
         $urlInterface->setUrl($this->url);
 
         $this->assertEquals($this->url, $urlInterface->getUrl());
@@ -41,7 +41,7 @@ class UrlManipulatorTest extends TestCase
      */
     public function url_manipulator_can_get_the_query_from_a_url()
     {
-        $urlInterface = new httpUrlManipulator;
+        $urlInterface = new SpatieUrlManipulator;
         $urlInterface->setUrl($this->url);
 
         $this->assertEquals([
@@ -54,7 +54,7 @@ class UrlManipulatorTest extends TestCase
      */
     public function url_manipulator_can_append_a_query_to_a_url()
     {
-        $urlInterface = new httpUrlManipulator;
+        $urlInterface = new SpatieUrlManipulator;
         $urlInterface->setUrl($this->url);
         $urlInterface->appendQuery([
             'one' => 'two'
@@ -72,7 +72,7 @@ class UrlManipulatorTest extends TestCase
      */
     public function url_manipulator_can_return_full_url_with_new_query_string()
     {
-        $urlInterface = new httpUrlManipulator;
+        $urlInterface = new SpatieUrlManipulator;
         $urlInterface->setUrl($this->url);
         $urlInterface->appendQuery([
             'one' => 'two'
@@ -86,7 +86,7 @@ class UrlManipulatorTest extends TestCase
 
     /** @test */
     public function url_manipulator_returns_empty_array_when_query_is_requested_with_no_query_string_available(){
-        $urlInterface = new httpUrlManipulator;
+        $urlInterface = new SpatieUrlManipulator;
         $urlInterface->setUrl('http://example.com');
         $this->assertEmpty($urlInterface->getQuery());
     }

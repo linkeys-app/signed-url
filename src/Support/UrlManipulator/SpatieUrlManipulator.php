@@ -2,11 +2,10 @@
 
 namespace Linkeys\LinkGenerator\Support\UrlManipulator;
 
-use http\QueryString;
-use http\Url;
 use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator as UrlManipulatorContract;
+use Spatie\Url\Url;
 
-class httpUrlManipulator implements UrlManipulatorContract
+class SpatieUrlManipulator implements UrlManipulatorContract
 {
 
     /**
@@ -16,7 +15,7 @@ class httpUrlManipulator implements UrlManipulatorContract
 
     public function setUrl(string $url)
     {
-        $this->url = new Url($url);
+        $this->url = Url::fromString($url);
     }
 
     /**
@@ -24,20 +23,19 @@ class httpUrlManipulator implements UrlManipulatorContract
      */
     public function getUrl()
     {
-        return $this->url->toString();
+        return (string) $this->url;
     }
 
     public function appendQuery(array $newQuery)
     {
-        $query = new QueryString($this->url->query);
-        $query->set($newQuery);
-        $this->url->query = $query->toString();
+        foreach($newQuery as $key => $value) {
+            $this->url = $this->url->withQueryParameter($key, $value);
+        }
     }
 
     public function getQuery() : ?array
     {
-        $query = new QueryString($this->url->query);
-        return $query->toArray();
+        return $this->url->getAllQueryParameters();
     }
 
 }

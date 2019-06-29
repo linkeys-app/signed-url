@@ -17,7 +17,7 @@ use Linkeys\LinkGenerator\Support\ExpiryNormaliser\NormaliserManagerContract;
 use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromDateTime;
 use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromInteger;
 use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromString;
-use Linkeys\LinkGenerator\Support\UrlManipulator\httpUrlManipulator;
+use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
 use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator;
 use Linkeys\LinkGenerator\Support\Uuid\RamseyUuidCreator;
 use Linkeys\LinkGenerator\Support\Uuid\UuidCreator;
@@ -37,7 +37,7 @@ class LinkGeneratorServiceProvider extends ServiceProvider
         $this->app->bind(LinkGeneratorContract::class, LinkGenerator::class);
         $this->app->bind(LinkContract::class, Link::class);
         $this->app->bind(GroupContract::class, Group::class);
-        $this->app->bind(UrlManipulator::class, httpUrlManipulator::class);
+        $this->app->bind(UrlManipulator::class, SpatieUrlManipulator::class);
         $this->app->bind(UuidCreator::class, RamseyUuidCreator::class);
 
         $normaliserManager = new NormaliserManager();

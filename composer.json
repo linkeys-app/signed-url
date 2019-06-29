@@ -1,0 +1,46 @@
+{
+    "name": "linkeys/link-generator",
+    "description": "Allows for the generation of expiring links with limited numbers of click",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Toby Twigger",
+            "email": "tobytwigger@hotmail.co.uk"
+        }
+    ],
+    "require": {
+        "php": "^7.2",
+        "ramsey/uuid": "^3.8",
+        "league/uri": "^5.3",
+        "ext-http": "*",
+        "illuminate/support": "~5.7.0|~5.8.0",
+        "illuminate/database": "~5.7.0|~5.8.0",
+        "illuminate/config": "~5.7.0|~5.8.0",
+        "nesbot/carbon": "^2.17"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.0",
+        "orchestra/testbench": "^3.7"
+    },
+    "autoload": {
+        "classmap": [
+            "database/factories"
+        ],
+        "psr-4": {
+            "Linkeys\\LinkGenerator\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Linkeys\\LinkGenerator\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Linkeys\\LinkGenerator\\Providers\\LinkGeneratorServiceProvider"
+            ]
+        }
+    }
+}

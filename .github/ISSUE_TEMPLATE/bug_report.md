@@ -7,14 +7,17 @@ assignees: ''
 
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is. e.g. When creating a link, the expiry is not saved.
+**Summary of the bug**
+A quick summary of the issue, e.g. When creating a link, the expiry is not saved.
 
 **To Reproduce**
-Steps to reproduce the behavior.
+How can we recreate this? 
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+**Expected behaviour**
+What did you expect to happen?
+
+**Actual behaviour**
+What did happen?
 
 **Additional context**
 Add any other context about the problem here.

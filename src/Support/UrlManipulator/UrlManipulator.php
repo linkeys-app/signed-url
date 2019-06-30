@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\UrlManipulator;
+namespace Linkeys\UrlSigner\Support\UrlManipulator;
 
 interface UrlManipulator
 {
@@ -10,6 +10,8 @@ interface UrlManipulator
     public function getUrl();
 
     public function appendQuery(array $query);
+
+    public function removeQuery($key);
 
     public function getQuery() : ?array;
 

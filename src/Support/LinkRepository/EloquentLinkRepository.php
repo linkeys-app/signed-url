@@ -1,9 +1,9 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\LinkRepository;
+namespace Linkeys\UrlSigner\Support\LinkRepository;
 
-use Linkeys\LinkGenerator\Contracts\Models\Link as LinkContract;
-use Linkeys\LinkGenerator\Models\Link;
+use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
+use Linkeys\UrlSigner\Models\Link;
 
 class EloquentLinkRepository implements LinkRepository
 {

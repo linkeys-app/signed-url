@@ -1,12 +1,12 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Support\GroupRepository;
+namespace Linkeys\UrlSigner\Tests\Integration\Support\GroupRepository;
 
 use Carbon\Carbon;
-use Linkeys\LinkGenerator\Models\Group;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Support\GroupRepository\EloquentGroupRepository;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Models\Group;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Support\GroupRepository\EloquentGroupRepository;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class EloquentGroupRepositoryTest extends TestCase
 {

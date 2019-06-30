@@ -1,13 +1,13 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests;
+namespace Linkeys\UrlSigner\Tests;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factory;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Linkeys\LinkGenerator\Models\Group;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Providers\LinkGeneratorServiceProvider;
+use Linkeys\UrlSigner\Models\Group;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Providers\UrlSignerServiceProvider;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
@@ -45,7 +45,7 @@ class TestCase extends \Orchestra\Testbench\TestCase
     protected function getPackageProviders($app)
     {
         return [
-            LinkGeneratorServiceProvider::class,
+            UrlSignerServiceProvider::class,
         ];
     }
 

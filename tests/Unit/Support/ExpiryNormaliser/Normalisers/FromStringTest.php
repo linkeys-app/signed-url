@@ -1,9 +1,9 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Unit\Support\ExpiryNormaliser\Normalisers;
+namespace Linkeys\UrlSigner\Tests\Unit\Support\ExpiryNormaliser\Normalisers;
 
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromString;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\FromString;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class FromStringTest extends TestCase
 {

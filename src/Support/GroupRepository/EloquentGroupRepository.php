@@ -1,9 +1,9 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\GroupRepository;
+namespace Linkeys\UrlSigner\Support\GroupRepository;
 
-use Linkeys\LinkGenerator\Contracts\Models\Link;
-use Linkeys\LinkGenerator\Models\Group;
+use Linkeys\UrlSigner\Contracts\Models\Link;
+use Linkeys\UrlSigner\Models\Group;
 
 class EloquentGroupRepository implements GroupRepository
 {

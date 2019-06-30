@@ -1,10 +1,10 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Unit\Support\ExpiryNormaliser\Normalisers;
+namespace Linkeys\UrlSigner\Tests\Unit\Support\ExpiryNormaliser\Normalisers;
 
 use Carbon\Carbon;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromInteger;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\FromInteger;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class FromIntegerTest extends TestCase
 {

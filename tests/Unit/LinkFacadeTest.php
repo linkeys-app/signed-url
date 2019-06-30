@@ -1,10 +1,10 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Unit;
+namespace Linkeys\UrlSigner\Tests\Unit;
 
-use Linkeys\LinkGenerator\Contracts\LinkGenerator as LinkGeneratorContract;
-use Linkeys\LinkGenerator\Link as LinkFacade;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
+use Linkeys\UrlSigner\Link as LinkFacade;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class LinkFacadeTest extends TestCase
 {
@@ -13,9 +13,9 @@ class LinkFacadeTest extends TestCase
     /** @test */
     public function it_calls_the_generate_function(){
 
-        $linkGenerator = $this->prophesize(LinkGeneratorContract::class);
+        $linkGenerator = $this->prophesize(UrlSignerContract::class);
         $linkGenerator->generate('url')->shouldBeCalled();
-        $this->instance(LinkGeneratorContract::class, $linkGenerator->reveal());
+        $this->instance(UrlSignerContract::class, $linkGenerator->reveal());
 
         LinkFacade::generate('url');
 

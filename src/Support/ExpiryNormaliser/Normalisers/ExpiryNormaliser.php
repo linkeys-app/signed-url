@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers;
+namespace Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers;
 
 abstract class ExpiryNormaliser
 {

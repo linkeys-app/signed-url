@@ -1,13 +1,14 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Unit\Middleware;
+namespace Linkeys\UrlSigner\Tests\Unit\Middleware;
 
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Linkeys\LinkGenerator\Contracts\Models\Link;
-use Linkeys\LinkGenerator\Exceptions\LinkNotFoundException;
-use Linkeys\LinkGenerator\Middleware\AddLinkToRequest;
-use Linkeys\LinkGenerator\Support\LinkRepository\LinkRepository;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Contracts\Models\Link;
+use Linkeys\UrlSigner\Exceptions\LinkNotFoundException;
+use Linkeys\UrlSigner\Middleware\AddLinkToRequest;
+use Linkeys\UrlSigner\Support\LinkRepository\LinkRepository;
+use Linkeys\UrlSigner\Support\UrlManipulator\UrlManipulator;
+use Linkeys\UrlSigner\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 class AddLinkToRequestTest extends TestCase
@@ -42,6 +43,8 @@ class AddLinkToRequestTest extends TestCase
         });
 
         $this->expectException(LinkNotFoundException::class);
+        $this->expectExceptionCode(404);
+        $this->expectExceptionMessage('Invalid Link');
 
         $middleware = new AddLinkToRequest($linkRepository->reveal());
         $middleware->handle($request->reveal(), function () {

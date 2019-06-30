@@ -1,5 +1,5 @@
 {
-    "name": "linkeys/link-generator",
+    "name": "linkeys-app/signed-url",
     "description": "Allows for the generation of expiring links with limited numbers of click",
     "type": "library",
     "license": "MIT",
@@ -28,18 +28,18 @@
             "database/factories"
         ],
         "psr-4": {
-            "Linkeys\\LinkGenerator\\": "src/"
+            "Linkeys\\UrlSigner\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Linkeys\\LinkGenerator\\Tests\\": "tests/"
+            "Linkeys\\UrlSigner\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Linkeys\\LinkGenerator\\Providers\\LinkGeneratorServiceProvider"
+                "Linkeys\\UrlSigner\\Providers\\UrlSignerServiceProvider"
             ]
         }
     }

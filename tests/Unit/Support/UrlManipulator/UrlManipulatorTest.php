@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Tests\Unit\Support\UrlManipulator;
+namespace Linkeys\UrlSigner\Tests\Unit\Support\UrlManipulator;
 
-use Linkeys\LinkGenerator\Tests\TestCase;
-use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
+use Linkeys\UrlSigner\Tests\TestCase;
+use Linkeys\UrlSigner\Support\UrlManipulator\SpatieUrlManipulator;
 
 class UrlManipulatorTest extends TestCase
 {
@@ -89,6 +89,14 @@ class UrlManipulatorTest extends TestCase
         $urlInterface = new SpatieUrlManipulator;
         $urlInterface->setUrl('http://example.com');
         $this->assertEmpty($urlInterface->getQuery());
+    }
+
+    /** @test */
+    public function it_removes_a_query_parameter(){
+        $urlInterface = new SpatieUrlManipulator;
+        $urlInterface->setUrl("https://example.com?foo=bar&uuid=xyz123");
+        $urlInterface->removeQuery('uuid');
+        $this->assertEquals('https://example.com?foo=bar', $urlInterface->getUrl());
     }
 
 }

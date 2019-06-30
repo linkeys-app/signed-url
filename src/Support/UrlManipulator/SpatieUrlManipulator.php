@@ -1,8 +1,8 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\UrlManipulator;
+namespace Linkeys\UrlSigner\Support\UrlManipulator;
 
-use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator as UrlManipulatorContract;
+use Linkeys\UrlSigner\Support\UrlManipulator\UrlManipulator as UrlManipulatorContract;
 use Spatie\Url\Url;
 
 class SpatieUrlManipulator implements UrlManipulatorContract
@@ -31,6 +31,12 @@ class SpatieUrlManipulator implements UrlManipulatorContract
         foreach($newQuery as $key => $value) {
             $this->url = $this->url->withQueryParameter($key, $value);
         }
+    }
+
+
+    public function removeQuery($key)
+    {
+        $this->url = $this->url->withoutQueryParameter($key);
     }
 
     public function getQuery() : ?array

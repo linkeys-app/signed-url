@@ -1,10 +1,10 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Unit\Support\ExpiryNormaliser\Normalisers;
+namespace Linkeys\UrlSigner\Tests\Unit\Support\ExpiryNormaliser\Normalisers;
 
 use Carbon\Carbon;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromDateTime;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\FromDateTime;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class FromDateTimeTest extends TestCase
 {

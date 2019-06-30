@@ -1,6 +1,6 @@
 <?php
 
-$factory->define(\Linkeys\LinkGenerator\Models\Link::class, function(\Faker\Generator $faker) {
+$factory->define(\Linkeys\UrlSigner\Models\Link::class, function(\Faker\Generator $faker) {
     return [
         'url' => $faker->url,
         'data' => [

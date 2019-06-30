@@ -7,6 +7,7 @@ use Linkeys\LinkGenerator\Contracts\Models\Link;
 use Linkeys\LinkGenerator\Exceptions\LinkNotFoundException;
 use Linkeys\LinkGenerator\Middleware\AddLinkToRequest;
 use Linkeys\LinkGenerator\Support\LinkRepository\LinkRepository;
+use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator;
 use Linkeys\LinkGenerator\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -42,6 +43,8 @@ class AddLinkToRequestTest extends TestCase
         });
 
         $this->expectException(LinkNotFoundException::class);
+        $this->expectExceptionCode(404);
+        $this->expectExceptionMessage('Invalid Link');
 
         $middleware = new AddLinkToRequest($linkRepository->reveal());
         $middleware->handle($request->reveal(), function () {

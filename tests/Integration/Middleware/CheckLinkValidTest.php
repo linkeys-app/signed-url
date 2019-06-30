@@ -34,7 +34,8 @@ class CheckLinkValidTest extends TestCase
 
         $linkValidMiddleware = new CheckLinkValid(new EloquentLinkRepository(new Link));
         $this->expectException(LinkClickLimitReachedException::class);
-
+        $this->expectExceptionCode(410);
+        $this->expectExceptionMessage('Link clicked too many times');
         $linkValidMiddleware->handle($request->reveal(), function(){});
     }
 
@@ -48,6 +49,8 @@ class CheckLinkValidTest extends TestCase
 
         $linkValidMiddleware = new CheckLinkValid(new EloquentLinkRepository(new Link));
         $this->expectException(LinkGroupClickLimitReachedException::class);
+        $this->expectExceptionCode(410);
+        $this->expectExceptionMessage('Link group clicked too many times');
 
         $linkValidMiddleware->handle($request->reveal(), function(){});
     }
@@ -60,6 +63,8 @@ class CheckLinkValidTest extends TestCase
 
         $linkValidMiddleware = new CheckLinkValid(new EloquentLinkRepository(new Link));
         $this->expectException(LinkExpiredException::class);
+        $this->expectExceptionCode(410);
+        $this->expectExceptionMessage('Link Expired');
 
         $linkValidMiddleware->handle($request->reveal(), function(){});
     }
@@ -72,6 +77,8 @@ class CheckLinkValidTest extends TestCase
 
         $linkValidMiddleware = new CheckLinkValid(new EloquentLinkRepository(new Link));
         $this->expectException(LinkExpiredException::class);
+        $this->expectExceptionCode(410);
+        $this->expectExceptionMessage('Link Expired');
 
         $linkValidMiddleware->handle($request->reveal(), function(){});
     }
@@ -84,6 +91,8 @@ class CheckLinkValidTest extends TestCase
 
         $linkValidMiddleware = new CheckLinkValid(new EloquentLinkRepository(new Link));
         $this->expectException(LinkExpiredException::class);
+        $this->expectExceptionCode(410);
+        $this->expectExceptionMessage('Link Expired');
 
         $linkValidMiddleware->handle($request->reveal(), function(){});
     }
@@ -96,6 +105,8 @@ class CheckLinkValidTest extends TestCase
 
         $linkValidMiddleware = new CheckLinkValid(new EloquentLinkRepository(new Link));
         $this->expectException(LinkGroupExpiredException::class);
+        $this->expectExceptionCode(410);
+        $this->expectExceptionMessage('Link Group Expired');
 
         $linkValidMiddleware->handle($request->reveal(), function(){});
     }

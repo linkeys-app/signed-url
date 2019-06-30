@@ -26,12 +26,20 @@ class UrlSignerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->mergeConfigFrom(__DIR__.'/../../config/links.php', config_path('links.php'));
+
+        $this->publishes([
+            __DIR__.'/../../config/links.php', config_path('links.php')
+        ], 'config');
+
+        $this->publishes([
+            __DIR__.'/../../database/migrations/', database_path('migrations')
+        ], 'migrations');
+
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         Event::listen(LinkClicked::class, RecordLinkClick::class);
-
     }
+    
     public function register()
     {
         $this->app->bind(UrlSignerContract::class, UrlSigner::class);
@@ -46,7 +54,7 @@ class UrlSignerServiceProvider extends ServiceProvider
         $normaliserManager->pushNormaliser(new FromInteger);
         $this->app->instance(NormaliserManagerContract::class, $normaliserManager);
 
-
+        $this->mergeConfigFrom(__DIR__.'/../../config/links.php', config_path('links.php'));
     }
 
 }

@@ -11,6 +11,8 @@ interface UrlManipulator
 
     public function appendQuery(array $query);
 
+    public function removeQuery($key);
+
     public function getQuery() : ?array;
 
 }

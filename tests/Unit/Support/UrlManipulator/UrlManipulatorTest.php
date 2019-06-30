@@ -91,6 +91,14 @@ class UrlManipulatorTest extends TestCase
         $this->assertEmpty($urlInterface->getQuery());
     }
 
+    /** @test */
+    public function it_removes_a_query_parameter(){
+        $urlInterface = new SpatieUrlManipulator;
+        $urlInterface->setUrl("https://example.com?foo=bar&uuid=xyz123");
+        $urlInterface->removeQuery('uuid');
+        $this->assertEquals('https://example.com?foo=bar', $urlInterface->getUrl());
+    }
+
 }
 
 

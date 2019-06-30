@@ -33,6 +33,12 @@ class SpatieUrlManipulator implements UrlManipulatorContract
         }
     }
 
+
+    public function removeQuery($key)
+    {
+        $this->url = $this->url->withoutQueryParameter($key);
+    }
+
     public function getQuery() : ?array
     {
         return $this->url->getAllQueryParameters();

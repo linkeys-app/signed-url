@@ -8,6 +8,7 @@ use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
 use Linkeys\UrlSigner\Contracts\Models\Group as GroupContract;
 use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
 use Linkeys\UrlSigner\Events\LinkClicked;
+use Linkeys\UrlSigner\Middleware\AddLinkDataToRequest;
 use Linkeys\UrlSigner\Middleware\AddLinkToRequest;
 use Linkeys\UrlSigner\Middleware\CheckLinkUnchanged;
 use Linkeys\UrlSigner\Middleware\CheckLinkValid;
@@ -46,6 +47,7 @@ class UrlSignerServiceProvider extends ServiceProvider
 
         $this->app['router']->middlewareGroup('link', [
             AddLinkToRequest::class,
+            AddLinkDataToRequest::class,
             CheckLinkUnchanged::class,
             CheckLinkValid::class
         ]);

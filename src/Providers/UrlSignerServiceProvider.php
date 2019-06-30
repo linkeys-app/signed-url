@@ -8,6 +8,10 @@ use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
 use Linkeys\UrlSigner\Contracts\Models\Group as GroupContract;
 use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
 use Linkeys\UrlSigner\Events\LinkClicked;
+use Linkeys\UrlSigner\Support\GroupRepository\EloquentGroupRepository;
+use Linkeys\UrlSigner\Support\GroupRepository\GroupRepository;
+use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
+use Linkeys\UrlSigner\Support\LinkRepository\LinkRepository;
 use Linkeys\UrlSigner\UrlSigner;
 use Linkeys\UrlSigner\Listeners\RecordLinkClick;
 use Linkeys\UrlSigner\Models\Group;
@@ -47,6 +51,9 @@ class UrlSignerServiceProvider extends ServiceProvider
         $this->app->bind(GroupContract::class, Group::class);
         $this->app->bind(UrlManipulator::class, SpatieUrlManipulator::class);
         $this->app->bind(UuidCreator::class, RamseyUuidCreator::class);
+        $this->app->bind(LinkRepository::class, EloquentLinkRepository::class);
+        $this->app->bind(GroupRepository::class, EloquentGroupRepository::class);
+
 
         $normaliserManager = new NormaliserManager();
         $normaliserManager->pushNormaliser(new FromDateTime);

@@ -12,7 +12,6 @@
     "require": {
         "php": "^7.2",
         "ramsey/uuid": "^3.8",
-        "league/uri": "^5.3",
         "illuminate/support": "~5.7.0|~5.8.0",
         "illuminate/database": "~5.7.0|~5.8.0",
         "illuminate/config": "~5.7.0|~5.8.0",

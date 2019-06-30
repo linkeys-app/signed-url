@@ -2,9 +2,10 @@
 
 namespace Linkeys\UrlSigner\Exceptions;
 
+use Exception;
 use Throwable;
 
-class LinkNotFoundException extends \Exception
+class LinkNotFoundException extends Exception
 {
     public function __construct($message = "Invalid Link", $code = 404, Throwable $previous = null)
     {

@@ -10,15 +10,18 @@
 
 ## Table of Contents
 
-* [Overview](#overview)
+* [Introduction](#introduction)
 * [Getting Started](#getting-started)
-* [Installation](#installation)
+    * [Installation](#installation)
 * [Usage](#usage)
+    * [Overview](#overview)
+    * [Creating a Link](#creating-a-link)
+    * [Handling a Link](#handling-a-link)
 * [Examples](#examples)
 * [Licence](#license)
 * [Contact](#contact)
 
-## Overview
+## Introduction
 
 Revamped URL signing brought to Laravel. Pass data through any url securely, and control expiry and number of clicks.
 
@@ -33,11 +36,35 @@ It couldn't be easier to install and set up url signing in your laravel app.
 
 ### Installation
 
-How to install
+1. Install through the composer package manager
+
+    ```
+    composer require linkeys/signed-url
+    ```
+
+2. (Optional) Publish the assets
+
+    ```
+    php artisan vendor:publish --provider="Linkeys\UrlSigner\Providers\UrlSignerServiceProvider"
+    ```
+    You can also use the ```--tag=config``` or ```--tag=migrations``` flags to only publish the configuration files or the migrations.
+
+3. Run the migrations
+
+    ```php artisan migrate```
 
 ## Usage
 
-### Standard Link
+### Overview
+
+This package works by modifying a URL to give it a signature. This must be a url you have registered in
+your routes. When the signed URL is opened in the browser, our middleware will not only inject the 
+attached data into a controller request, but throw exceptions if the link has expired, been clicked 
+too many times or altered in any way.
+
+### Creating a Link
+
+#### Standard Link
 The easiest way to create a link is through the facade:
 
 ```php 
@@ -46,6 +73,8 @@ echo $link; // https://www.example.com/invitation?uuid=UUID
 ```
 
 The link can now be sent out or used just like normal signed URLs. 
+
+You can also resolve an instance of ```\Linkeys\UrlSigner\Contracts\UrlSigner``` from the container and call the facade functions directly.
 
 #### Data 
 Instead of encoding data into the url yourself, simply pass it as the second argument.
@@ -97,13 +126,50 @@ Expiry is default for links unless they specify it themselves.
 This will create two links, both with different data and expiring in 24 hours, but since the group click limit is 1 only a single link may be clicked.
 This is useful for situations in which you want to give the user a choice of links to click, such as for an invitation (the user should only be able to click 'Yes' or 'No' to respond).
 
-You can access the links using ```$group->links; ```, which wll return a Laravel collection.
+The expiry parameter in a group is a default applied to all links in the group which don't have an 
+expiry date. If you set the expiry date in the link in addition to the in the group, only the link
+expiry will be checked.
 
+You can access the links using ```$group->links;```, which wll return a Laravel collection.
+
+### Handling a Link
+    
+#### Middleware
+    
+To enable exceptions to be thrown when a link is invalid in any way, simply add the ```'link'```
+middleware to any relevant routes. This will take care of:
+- Ensuring the URL has not been changed.
+- Checking the link has not expired.
+- Checking the link hasn't reached the limit on number of clicks.
+- Adding the link and relevant data into the request.
+  
+    
 #### Error handling
 
-#### Default Views
+The middleware will throw exceptions when the link is invalid in any way. By default, these will be
+handled by Laravel to display an error page with a simple message.
+ 
+By using your apps exception handler, you can choose to show custom pages to respond to each of 
+the following situations by catching an error and returning a response:
+
+| Condition                                     | Exception                           |
+|-----------------------------------------------|-------------------------------------|
+| URL has been changed                          | LinkNotFoundException               |
+| Signature was not found                       | LinkNotFoundException               |
+| Link has been clicked too many times          | LinkClickLimitReachedException      |
+| Link group has been clicked too many times    | LinkGroupClickLimitReachedException |
+| Link has expired                              | LinkExpiredException                |
+| Link group has expired and link had no expiry | LinkGroupExpiredException           |
+
+Through using exception inheritance, you can control which pages to show for which exception, or just
+have a single page for all link exceptions. The inheritance diagram is shown below, with all classes 
+being in the namespace ```\Linkeys\UrlSigner\Exceptions``` except for ```\Exception```.
+
+![Exception Inheritance](exceptions.png)
 
 ## Examples
+
+Coming soon...
 
 ## Contributing
 

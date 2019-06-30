@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Exceptions\ClickLimit;
+namespace Linkeys\UrlSigner\Exceptions\ClickLimit;
 
 use Throwable;
 

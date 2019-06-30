@@ -1,12 +1,12 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Listeners;
+namespace Linkeys\UrlSigner\Tests\Integration\Listeners;
 
 use Illuminate\Support\Facades\Event;
-use Linkeys\LinkGenerator\Events\LinkClicked;
-use Linkeys\LinkGenerator\Listeners\RecordLinkClick;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Events\LinkClicked;
+use Linkeys\UrlSigner\Listeners\RecordLinkClick;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class RecordLinkClickTest extends TestCase
 {

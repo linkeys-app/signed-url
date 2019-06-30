@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Support\ExpiryNormaliser;
+namespace Linkeys\UrlSigner\Support\ExpiryNormaliser;
 
 
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\ExpiryNormaliser;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\ExpiryNormaliser;
 
 class NormaliserManager implements NormaliserManagerContract
 {

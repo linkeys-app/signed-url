@@ -1,11 +1,11 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Models;
+namespace Linkeys\UrlSigner\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
-use Linkeys\LinkGenerator\Contracts\Models\Group as GroupModelContract;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\NormaliserManagerContract;
+use Linkeys\UrlSigner\Contracts\Models\Group as GroupModelContract;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\NormaliserManagerContract;
 
 class Group extends Model implements GroupModelContract
 {

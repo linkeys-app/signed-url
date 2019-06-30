@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Exceptions;
+namespace Linkeys\UrlSigner\Exceptions;
 
 use Exception;
 use Throwable;

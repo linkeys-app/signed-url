@@ -1,13 +1,13 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Link;
+namespace Linkeys\UrlSigner\Tests\Integration\Link;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Linkeys\LinkGenerator\Contracts\Models\Link as LinkContract;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Support\UrlManipulator\UrlManipulator;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class LinkModelTest extends TestCase
 {

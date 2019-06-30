@@ -1,27 +1,27 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration;
+namespace Linkeys\UrlSigner\Tests\Integration;
 
 use Carbon\Carbon;
-use Linkeys\LinkGenerator\LinkGenerator;
-use Linkeys\LinkGenerator\Models\Group;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Support\GroupRepository\EloquentGroupRepository;
-use Linkeys\LinkGenerator\Support\LinkRepository\EloquentLinkRepository;
-use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\UrlSigner;
+use Linkeys\UrlSigner\Models\Group;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Support\GroupRepository\EloquentGroupRepository;
+use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
+use Linkeys\UrlSigner\Support\UrlManipulator\SpatieUrlManipulator;
+use Linkeys\UrlSigner\Tests\TestCase;
 
-class LinkGeneratorTest extends TestCase
+class UrlSignerTest extends TestCase
 {
 
-    /** @var LinkGenerator */
+    /** @var UrlSigner */
     public $links;
 
     public function setUp(): void
     {
         parent::setUp();
 
-        $this->links = new LinkGenerator(
+        $this->links = new UrlSigner(
             new EloquentLinkRepository(new Link),
             new EloquentGroupRepository(new Group),
             new SpatieUrlManipulator
@@ -58,7 +58,7 @@ class LinkGeneratorTest extends TestCase
     /** @test */
     public function links_can_be_created_in_the_callback()
     {
-        $group = $this->links->group(function (LinkGenerator $linkGenerator) {
+        $group = $this->links->group(function (UrlSigner $linkGenerator) {
             $linkGenerator->generate('https://example.com', [], Carbon::now(), 5);
         });
 
@@ -72,7 +72,7 @@ class LinkGeneratorTest extends TestCase
     /** @test */
     public function it_creates_links_tied_to_groups()
     {
-        $group = $this->links->group(function(LinkGenerator $link) {
+        $group = $this->links->group(function(UrlSigner $link) {
             $link->generate('https://example.com');
             $link->generate('https://example2.com');
         });

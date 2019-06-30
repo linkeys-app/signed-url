@@ -1,8 +1,8 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Exceptions\Expiry;
+namespace Linkeys\UrlSigner\Exceptions\Expiry;
 
-use Linkeys\LinkGenerator\Exceptions\LinkInvalidException;
+use Linkeys\UrlSigner\Exceptions\LinkInvalidException;
 use Throwable;
 
 class ExpiredException extends LinkInvalidException

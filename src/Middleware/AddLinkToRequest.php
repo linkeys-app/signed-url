@@ -1,15 +1,15 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Middleware;
+namespace Linkeys\UrlSigner\Middleware;
 
 
 use Closure;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Linkeys\LinkGenerator\Contracts\Models\Link;
-use Linkeys\LinkGenerator\Exceptions\LinkNotFoundException;
-use Linkeys\LinkGenerator\Support\LinkRepository\LinkRepository;
-use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator;
+use Linkeys\UrlSigner\Contracts\Models\Link;
+use Linkeys\UrlSigner\Exceptions\LinkNotFoundException;
+use Linkeys\UrlSigner\Support\LinkRepository\LinkRepository;
+use Linkeys\UrlSigner\Support\UrlManipulator\UrlManipulator;
 use Symfony\Component\HttpFoundation\Request;
 
 class AddLinkToRequest

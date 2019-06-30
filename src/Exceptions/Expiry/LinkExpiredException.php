@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Exceptions\Expiry;
+namespace Linkeys\UrlSigner\Exceptions\Expiry;
 
 use Throwable;
 

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Contracts\Models;
+namespace Linkeys\UrlSigner\Contracts\Models;
 
 
 interface Link

@@ -1,9 +1,9 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Events;
+namespace Linkeys\UrlSigner\Events;
 
 use Illuminate\Queue\SerializesModels;
-use Linkeys\LinkGenerator\Contracts\Models\Link;
+use Linkeys\UrlSigner\Contracts\Models\Link;
 
 class LinkClicked
 {

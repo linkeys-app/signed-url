@@ -1,16 +1,16 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Middleware;
+namespace Linkeys\UrlSigner\Tests\Integration\Middleware;
 
 
 use Illuminate\Http\Request;
-use Linkeys\LinkGenerator\Exceptions\LinkNotFoundException;
-use Linkeys\LinkGenerator\Middleware\CheckLinkUnchanged;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Support\LinkRepository\EloquentLinkRepository;
-use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Exceptions\LinkNotFoundException;
+use Linkeys\UrlSigner\Middleware\CheckLinkUnchanged;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
+use Linkeys\UrlSigner\Support\UrlManipulator\SpatieUrlManipulator;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class CheckLinkUnchangedTest extends TestCase
 {

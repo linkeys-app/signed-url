@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\Uuid;
+namespace Linkeys\UrlSigner\Support\Uuid;
 
 interface UuidCreator
 {

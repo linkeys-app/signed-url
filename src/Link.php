@@ -1,18 +1,18 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator;
+namespace Linkeys\UrlSigner;
 
 
 use Illuminate\Support\Facades\Facade;
-use Linkeys\LinkGenerator\Contracts\LinkGenerator as LinkGeneratorContract;
+use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
 
 class Link extends Facade
 {
 
     protected static function getFacadeAccessor()
     {
-        return LinkGeneratorContract::class;
+        return UrlSignerContract::class;
     }
 
 }

@@ -21,3 +21,6 @@ What did happen?
 
 **Additional context**
 Add any other context about the problem here.
+
+**Suggestion of a fix**
+If you have any ideas of how to solve this, pop them here!

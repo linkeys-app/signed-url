@@ -28,18 +28,18 @@ class UrlSignerServiceProvider extends ServiceProvider
     {
 
         $this->publishes([
-            __DIR__.'/../../config/links.php', config_path('links.php')
+            __DIR__.'/../../config/links.php' => config_path('links.php')
         ], 'config');
 
         $this->publishes([
-            __DIR__.'/../../database/migrations/', database_path('migrations')
+            __DIR__.'/../../database/migrations/' => database_path('migrations')
         ], 'migrations');
 
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         Event::listen(LinkClicked::class, RecordLinkClick::class);
     }
-    
+
     public function register()
     {
         $this->app->bind(UrlSignerContract::class, UrlSigner::class);

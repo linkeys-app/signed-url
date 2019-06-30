@@ -1,5 +1,5 @@
 {
-    "name": "linkeys/link-generator",
+    "name": "linkeys-app/signed-url",
     "description": "Allows for the generation of expiring links with limited numbers of click",
     "type": "library",
     "license": "MIT",

@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Exceptions;
+namespace Linkeys\UrlSigner\Exceptions;
 
 use Throwable;
 

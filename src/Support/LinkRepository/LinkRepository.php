@@ -1,8 +1,8 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\LinkRepository;
+namespace Linkeys\UrlSigner\Support\LinkRepository;
 
-use Linkeys\LinkGenerator\Contracts\Models\Link;
+use Linkeys\UrlSigner\Contracts\Models\Link;
 
 interface LinkRepository
 {

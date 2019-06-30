@@ -28,18 +28,18 @@
             "database/factories"
         ],
         "psr-4": {
-            "Linkeys\\LinkGenerator\\": "src/"
+            "Linkeys\\UrlSigner\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Linkeys\\LinkGenerator\\Tests\\": "tests/"
+            "Linkeys\\UrlSigner\\Tests\\": "tests/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Linkeys\\LinkGenerator\\Providers\\LinkGeneratorServiceProvider"
+                "Linkeys\\UrlSigner\\Providers\\UrlSignerServiceProvider"
             ]
         }
     }

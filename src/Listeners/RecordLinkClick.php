@@ -1,9 +1,9 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Listeners;
+namespace Linkeys\UrlSigner\Listeners;
 
-use Linkeys\LinkGenerator\Contracts\Models\Link;
-use Linkeys\LinkGenerator\Events\LinkClicked;
+use Linkeys\UrlSigner\Contracts\Models\Link;
+use Linkeys\UrlSigner\Events\LinkClicked;
 
 class RecordLinkClick
 {

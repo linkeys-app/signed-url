@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Support\UrlManipulator;
+namespace Linkeys\UrlSigner\Support\UrlManipulator;
 
 interface UrlManipulator
 {

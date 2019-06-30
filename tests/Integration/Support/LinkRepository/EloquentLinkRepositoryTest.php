@@ -1,13 +1,13 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Support\LinkRepository;
+namespace Linkeys\UrlSigner\Tests\Integration\Support\LinkRepository;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Support\LinkRepository\EloquentLinkRepository;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class EloquentLinkRepositoryTest extends TestCase
 {

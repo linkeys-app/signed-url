@@ -1,9 +1,9 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Support\Uuid;
+namespace Linkeys\UrlSigner\Tests\Integration\Support\Uuid;
 
-use Linkeys\LinkGenerator\Support\Uuid\RamseyUuidCreator;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Support\Uuid\RamseyUuidCreator;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class RamseyUuidCreatorTest extends TestCase
 {

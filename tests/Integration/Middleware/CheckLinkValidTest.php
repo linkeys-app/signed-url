@@ -1,21 +1,21 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Tests\Integration\Middleware;
+namespace Linkeys\UrlSigner\Tests\Integration\Middleware;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Testing\Fakes\EventFake;
-use Linkeys\LinkGenerator\Events\LinkClicked;
-use Linkeys\LinkGenerator\Exceptions\ClickLimit\LinkGroupClickLimitReachedException;
-use Linkeys\LinkGenerator\Exceptions\Expiry\LinkExpiredException;
-use Linkeys\LinkGenerator\Exceptions\Expiry\LinkGroupExpiredException;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Exceptions\ClickLimit\LinkClickLimitReachedException;
-use Linkeys\LinkGenerator\Middleware\CheckLinkValid;
-use Linkeys\LinkGenerator\Models\Group;
-use Linkeys\LinkGenerator\Support\LinkRepository\EloquentLinkRepository;
-use Linkeys\LinkGenerator\Support\LinkRepository\LinkRepository;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Events\LinkClicked;
+use Linkeys\UrlSigner\Exceptions\ClickLimit\LinkGroupClickLimitReachedException;
+use Linkeys\UrlSigner\Exceptions\Expiry\LinkExpiredException;
+use Linkeys\UrlSigner\Exceptions\Expiry\LinkGroupExpiredException;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Exceptions\ClickLimit\LinkClickLimitReachedException;
+use Linkeys\UrlSigner\Middleware\CheckLinkValid;
+use Linkeys\UrlSigner\Models\Group;
+use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
+use Linkeys\UrlSigner\Support\LinkRepository\LinkRepository;
+use Linkeys\UrlSigner\Tests\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
 class CheckLinkValidTest extends TestCase

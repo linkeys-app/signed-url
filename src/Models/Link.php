@@ -1,19 +1,19 @@
 <?php
 
-namespace Linkeys\LinkGenerator\Models;
+namespace Linkeys\UrlSigner\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\App;
-use Linkeys\LinkGenerator\Contracts\Models\Link as LinkModelContract;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\NormaliserManager;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\NormaliserManagerContract;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\ExpiryNormaliser;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromDateTime;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromInteger;
-use Linkeys\LinkGenerator\Support\ExpiryNormaliser\Normalisers\FromString;
-use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator;
-use Linkeys\LinkGenerator\Support\Uuid\UuidCreator;
+use Linkeys\UrlSigner\Contracts\Models\Link as LinkModelContract;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\NormaliserManager;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\NormaliserManagerContract;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\ExpiryNormaliser;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\FromDateTime;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\FromInteger;
+use Linkeys\UrlSigner\Support\ExpiryNormaliser\Normalisers\FromString;
+use Linkeys\UrlSigner\Support\UrlManipulator\UrlManipulator;
+use Linkeys\UrlSigner\Support\Uuid\UuidCreator;
 use Ramsey\Uuid\Uuid;
 
 class Link extends Model implements LinkModelContract

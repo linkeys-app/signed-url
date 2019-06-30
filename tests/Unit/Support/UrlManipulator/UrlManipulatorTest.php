@@ -1,10 +1,10 @@
 <?php
 
 
-namespace Linkeys\LinkGenerator\Tests\Unit\Support\UrlManipulator;
+namespace Linkeys\UrlSigner\Tests\Unit\Support\UrlManipulator;
 
-use Linkeys\LinkGenerator\Tests\TestCase;
-use Linkeys\LinkGenerator\Support\UrlManipulator\SpatieUrlManipulator;
+use Linkeys\UrlSigner\Tests\TestCase;
+use Linkeys\UrlSigner\Support\UrlManipulator\SpatieUrlManipulator;
 
 class UrlManipulatorTest extends TestCase
 {

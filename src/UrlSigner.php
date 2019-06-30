@@ -1,16 +1,16 @@
 <?php
 
-namespace Linkeys\LinkGenerator;
+namespace Linkeys\UrlSigner;
 
 use \DateTime;
-use Linkeys\LinkGenerator\Contracts\LinkGenerator as LinkGeneratorContract;
-use Linkeys\LinkGenerator\Contracts\Models\Link as LinkContract;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Support\GroupRepository\GroupRepository;
-use Linkeys\LinkGenerator\Support\LinkRepository\LinkRepository;
-use Linkeys\LinkGenerator\Support\UrlManipulator\UrlManipulator;
+use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
+use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Support\GroupRepository\GroupRepository;
+use Linkeys\UrlSigner\Support\LinkRepository\LinkRepository;
+use Linkeys\UrlSigner\Support\UrlManipulator\UrlManipulator;
 
-class LinkGenerator implements LinkGeneratorContract
+class UrlSigner implements UrlSignerContract
 {
     protected $linkRepository;
 

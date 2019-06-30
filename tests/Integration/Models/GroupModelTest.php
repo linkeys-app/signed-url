@@ -3,9 +3,9 @@
 namespace Linkeys\GroupGenerator\Tests\Integration\Group;
 
 use Carbon\Carbon;
-use Linkeys\LinkGenerator\Models\Group;
-use Linkeys\LinkGenerator\Models\Link;
-use Linkeys\LinkGenerator\Tests\TestCase;
+use Linkeys\UrlSigner\Models\Group;
+use Linkeys\UrlSigner\Models\Link;
+use Linkeys\UrlSigner\Tests\TestCase;
 
 class GroupModelTest extends TestCase
 {

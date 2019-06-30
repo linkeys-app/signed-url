@@ -8,6 +8,9 @@ use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
 use Linkeys\UrlSigner\Contracts\Models\Group as GroupContract;
 use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
 use Linkeys\UrlSigner\Events\LinkClicked;
+use Linkeys\UrlSigner\Middleware\AddLinkToRequest;
+use Linkeys\UrlSigner\Middleware\CheckLinkUnchanged;
+use Linkeys\UrlSigner\Middleware\CheckLinkValid;
 use Linkeys\UrlSigner\Support\GroupRepository\EloquentGroupRepository;
 use Linkeys\UrlSigner\Support\GroupRepository\GroupRepository;
 use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
@@ -40,6 +43,12 @@ class UrlSignerServiceProvider extends ServiceProvider
         ], 'migrations');
 
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
+
+        $this->app['router']->middlewareGroup('link', [
+            AddLinkToRequest::class,
+            CheckLinkUnchanged::class,
+            CheckLinkValid::class
+        ]);
 
         Event::listen(LinkClicked::class, RecordLinkClick::class);
     }

@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Linkeys\UrlSigner;
+namespace Linkeys\UrlSigner\Facade;
 
 
 use Illuminate\Support\Facades\Facade;
 use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
 
-class Link extends Facade
+class UrlSigner extends Facade
 {
 
     protected static function getFacadeAccessor()

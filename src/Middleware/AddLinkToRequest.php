@@ -35,7 +35,7 @@ class AddLinkToRequest
             throw new LinkNotFoundException;
         }
 
-        $request->attributes->add(['link' => $link]);
+        $request->attributes->add([\Linkeys\UrlSigner\Models\Link::class => $link]);
 
         return $next($request);
     }

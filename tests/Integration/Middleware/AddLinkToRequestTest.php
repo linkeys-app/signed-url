@@ -19,7 +19,7 @@ class AddLinkToRequestTest extends TestCase
         $request = new Request(
             [config('links.query_key') => $link->uuid],
             [],
-            ['foo' => 'bar', 'link' => 'baz'],
+            ['foo' => 'bar', Link::class => 'baz'],
             [],
             [],
             ['HTTPS'=>1, 'HTTP_HOST' => 'www.example.com', 'REQUEST_URI' => '/invitation']
@@ -30,7 +30,7 @@ class AddLinkToRequestTest extends TestCase
             return $request;
         });
 
-        $this->assertTrue($link->is($newRequest->get('link')));
+        $this->assertTrue($link->is($newRequest->get(Link::class)));
         $this->assertEquals('bar', $newRequest->get('foo'));
     }
 

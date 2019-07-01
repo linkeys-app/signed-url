@@ -149,6 +149,22 @@ middleware to any relevant routes. This will take care of:
 - Checking the link hasn't reached the limit on number of clicks.
 - Adding the link and relevant data into the request.
   
+#### Retrieving Link Information
+
+We automatically put all data attached to a link into the request attributes. The following is a controller
+method called when a user clicks on a generated link with data attached.
+
+```php
+public function acceptInvitation(Request $request)
+{
+    // Given the link has the data ['foo' => 'bar']...
+    $bar = $request->get('foo');
+    
+    // To retrieve the link instance:
+    $link = $request->get(\Linkeys\UrlSigner\Models\Link::class);
+    var_dump($link->data)  // ['foo' => 'bar']
+}
+```
     
 #### Error handling
 

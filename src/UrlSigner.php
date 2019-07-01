@@ -57,6 +57,11 @@ class UrlSigner implements UrlSignerContract
         return $link;
     }
 
+    public function sign(string $url, $data = [], $expiry = null, $clickLimit = null) : LinkContract
+    {
+        return $this->generate($url, $data, $expiry, $clickLimit);
+    }
+
     public function group(callable $callback, $expiry = null, $clickLimit = null)
     {
         $group = $this->groupRepository->create([

@@ -19,7 +19,7 @@ class AddLinkDataToRequestTest extends TestCase
         $request = new Request(
             [config('links.query_key') => $link->uuid],
             [],
-            ['link' => $link, 'xyz' => 123],
+            [Link::class => $link, 'xyz' => 123],
             [],
             [],
             ['HTTPS'=>1, 'HTTP_HOST' => 'www.example.com', 'REQUEST_URI' => '/invitation']

@@ -74,7 +74,11 @@ $link = \Linkeys\UrlSigner\Link::generate('https://www.example.com/invitation');
 echo $link; // https://www.example.com/invitation?uuid=UUID
 ```
 
-The link can now be sent out or used just like normal signed URLs. 
+The link can now be sent out or used just like normal signed URLs. You may also use the sign method, 
+which is simply an alias for generate
+```php
+$link = \Linkeys\UrlSigner\Link::sign('https://www.example.com/invitation');
+```
 
 You can also resolve an instance of ```\Linkeys\UrlSigner\Contracts\UrlSigner``` from the container and call the facade functions directly.
 

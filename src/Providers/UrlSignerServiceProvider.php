@@ -52,7 +52,6 @@ class UrlSignerServiceProvider extends ServiceProvider
             CheckLinkValid::class
         ]);
 
-        $this->app->alias('UrlSigner', UrlSigner::class);
         Event::listen(LinkClicked::class, RecordLinkClick::class);
     }
 

@@ -70,14 +70,14 @@ too many times or altered in any way.
 The easiest way to create a link is through the facade:
 
 ```php 
-$link = \Linkeys\UrlSigner\Link::generate('https://www.example.com/invitation');
+$link = \Linkeys\UrlSigner\Facade\UrlSigner::generate('https://www.example.com/invitation');
 echo $link; // https://www.example.com/invitation?uuid=UUID
 ```
 
 The link can now be sent out or used just like normal signed URLs. You may also use the sign method, 
-which is simply an alias for generate
+which is simply an alias for generate, and the alias instead of importing the full facade namespace
 ```php
-$link = \Linkeys\UrlSigner\Link::sign('https://www.example.com/invitation');
+$link = UrlSigner::sign('https://www.example.com/invitation');
 ```
 
 You can also resolve an instance of ```\Linkeys\UrlSigner\Contracts\UrlSigner``` from the container and call the facade functions directly.
@@ -86,7 +86,7 @@ You can also resolve an instance of ```\Linkeys\UrlSigner\Contracts\UrlSigner```
 Instead of encoding data into the url yourself, simply pass it as the second argument.
 
 ```php 
-$link = \Linkeys\UrlSigner\Link::generate('https://www.example.com/invitation', ['foo' => 'bar']);
+$link = \Linkeys\UrlSigner\Facade\UrlSigner::generate('https://www.example.com/invitation', ['foo' => 'bar']);
 echo $link; // https://www.example.com/invitation?uuid=UUID
 ```
 In your controller, e.g. InvitationController.php
@@ -102,7 +102,7 @@ Additional to a basic link is the ability to set the expiry of the link. Only wa
 
 
 ```php 
-$link = \Linkeys\UrlSigner\Link::generate('https://www.example.com/invitation', ['foo' => 'bar'], '+24 hours');
+$link = \Linkeys\UrlSigner\Facade\UrlSigner::generate('https://www.example.com/invitation', ['foo' => 'bar'], '+24 hours');
 ```
 
 The expiry accepts a string, unix timestamp or a datetime instance (i.e. Carbon).
@@ -112,7 +112,7 @@ The expiry accepts a string, unix timestamp or a datetime instance (i.e. Carbon)
 The number of clicks of a link can also be set. If you only want a user to be able to click a link one time:
 
 ```php 
-$link = \Linkeys\UrlSigner\Link::generate('https://www.example.com/invitation', ['foo' => 'bar'], '+24 hours', 1);
+$link = \Linkeys\UrlSigner\Facade\UrlSigner::generate('https://www.example.com/invitation', ['foo' => 'bar'], '+24 hours', 1);
 ```
 
 The first time the link is clicked, the route will work like normal. The second time, since the link only has a single click, an exception will be thrown.
@@ -123,7 +123,7 @@ By grouping links, the click limit may be spread across multiple links. Given a 
 Expiry is default for links unless they specify it themselves.
 
 ```php
-    $group = \Linkeys\UrlSigner\Link::group(function($links) {
+    $group = \Linkeys\UrlSigner\Facade\UrlSigner::group(function($links) {
         $links->generate('https://www.example.com', ['foo'=>'bar']),
         $links->generate('https://www.example.com', ['foo'=>'baz'])
     }, '+ 24 hours', 1)'

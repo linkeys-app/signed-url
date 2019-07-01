@@ -1,6 +1,15 @@
 {
     "name": "linkeys/signed-url",
     "description": "Allows for the generation of expiring links with limited numbers of click",
+    "keywords": [
+	"signed",
+	"url",
+	"laravel",
+	"expire",
+	"single use",
+	"link",
+	"linkeys"
+    ],
     "type": "library",
     "license": "MIT",
     "authors": [
@@ -39,7 +48,10 @@
         "laravel": {
             "providers": [
                 "Linkeys\\UrlSigner\\Providers\\UrlSignerServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "UrlSigner": "Linkeys\\UrlSigner\\Link"
+            }
         }
     }
 }

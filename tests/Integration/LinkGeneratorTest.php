@@ -46,6 +46,14 @@ class UrlSignerTest extends TestCase
     }
 
     /** @test */
+    public function sign_can_be_used_as_an_alias(){
+        $link = $this->links->sign('https://example.com');
+
+        $this->assertDatabaseHas(config('links.tables.links'), ['id' => $link->id]);
+
+    }
+
+    /** @test */
     public function group_is_created_in_database()
     {
         $group = $this->links->group(function () {

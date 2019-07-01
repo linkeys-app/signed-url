@@ -23,7 +23,7 @@ class CheckLinkValidTest extends TestCase
 
     public function saveLinkInRequest($link){
         $request = $this->prophesize(Request::class);
-        $request->get('link')->shouldBeCalled()->willReturn($link);
+        $request->get(Link::class)->shouldBeCalled()->willReturn($link);
         return $request;
     }
 

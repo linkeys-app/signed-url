@@ -29,7 +29,7 @@ class CheckLinkUnchanged
     public function handle(Request $request, Closure $next)
     {
 
-        $link = $request->get('link');
+        $link = $request->get(\Linkeys\UrlSigner\Models\Link::class);
 
         $this->urlManipulator->setUrl($request->getUri());
         $this->urlManipulator->removeQuery(config('links.query_key'));

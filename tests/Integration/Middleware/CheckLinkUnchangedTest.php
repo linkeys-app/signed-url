@@ -17,7 +17,7 @@ class CheckLinkUnchangedTest extends TestCase
 
     public function saveLinkInRequest($link){
         $request = $this->prophesize(\Symfony\Component\HttpFoundation\Request::class);
-        $request->get('link')->shouldBeCalled()->willReturn($link);
+        $request->get(Link::class)->shouldBeCalled()->willReturn($link);
         return $request;
     }
 

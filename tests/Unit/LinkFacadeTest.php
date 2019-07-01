@@ -3,7 +3,7 @@
 namespace Linkeys\UrlSigner\Tests\Unit;
 
 use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
-use Linkeys\UrlSigner\Link as LinkFacade;
+use Linkeys\UrlSigner\Facade\UrlSigner as LinkFacade;
 use Linkeys\UrlSigner\Tests\TestCase;
 
 class LinkFacadeTest extends TestCase

@@ -21,7 +21,7 @@ class CheckLinkValid
         public function handle(Request $request, Closure $next)
     {
 
-        $link = $request->get('link');
+        $link = $request->get(\Linkeys\UrlSigner\Models\Link::class);
 
         if($link->clickLimitReached()) {
             throw new LinkClickLimitReachedException;

@@ -48,7 +48,10 @@
         "laravel": {
             "providers": [
                 "Linkeys\\UrlSigner\\Providers\\UrlSignerServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "UrlSigner": "Linkeys\\UrlSigner\\Link"
+            }
         }
     }
 }

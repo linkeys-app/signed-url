@@ -7,8 +7,8 @@ use Throwable;
 class LinkGroupExpiredException extends ExpiredException
 {
 
-    public function __construct($message = "Link Group Expired", $code = 410, Throwable $previous = null)
+    public function __construct($code = 410, $message = "Link Group Expired", Throwable $previous = null)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($code, $message, $previous);
     }
 }

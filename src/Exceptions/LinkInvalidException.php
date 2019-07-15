@@ -3,15 +3,15 @@
 
 namespace Linkeys\UrlSigner\Exceptions;
 
-use Exception;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
-class LinkInvalidException extends Exception
+class LinkInvalidException extends HttpException
 {
 
-    public function __construct($message = "Invalid Link", $code = 410, Throwable $previous = null)
+    public function __construct($code = 410, $message = "Invalid Link", Throwable $previous = null)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($code, $message, $previous);
     }
 
 }

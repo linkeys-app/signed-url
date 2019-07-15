@@ -2,13 +2,13 @@
 
 namespace Linkeys\UrlSigner\Exceptions;
 
-use Exception;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 use Throwable;
 
-class LinkNotFoundException extends Exception
+class LinkNotFoundException extends HttpException
 {
-    public function __construct($message = "Invalid Link", $code = 404, Throwable $previous = null)
+    public function __construct($code = 404, $message = "Invalid Link", Throwable $previous = null)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($code, $message, $previous);
     }
 }

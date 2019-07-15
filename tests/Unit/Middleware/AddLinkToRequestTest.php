@@ -43,7 +43,6 @@ class AddLinkToRequestTest extends TestCase
         });
 
         $this->expectException(LinkNotFoundException::class);
-        $this->expectExceptionCode(404);
         $this->expectExceptionMessage('Invalid Link');
 
         $middleware = new AddLinkToRequest($linkRepository->reveal());

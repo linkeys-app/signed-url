@@ -8,9 +8,9 @@ use Throwable;
 class ExpiredException extends LinkInvalidException
 {
 
-    public function __construct($message = "Link Expired", $code = 410, Throwable $previous = null)
+    public function __construct($code = 410, $message = "Link Expired", Throwable $previous = null)
     {
-        parent::__construct($message, $code, $previous);
+        parent::__construct($code, $message, $previous);
     }
 
 }

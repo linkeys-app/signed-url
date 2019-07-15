@@ -31,7 +31,6 @@ class CheckLinkUnchangedTest extends TestCase
         $middleware = new CheckLinkUnchanged(new SpatieUrlManipulator);
         $this->expectException(LinkNotFoundException::class);
         $this->expectExceptionMessage('Invalid Link');
-        $this->expectExceptionCode(404);
 
         $middleware->handle($request->reveal(), function($request){});
 

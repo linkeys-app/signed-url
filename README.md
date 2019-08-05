@@ -4,9 +4,9 @@
 
 <!-- PROJECT SHIELDS -->
 
-[![Build Status](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/build.png?b=develop)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/build-status/develop)
-[![Code Coverage](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/coverage.png?b=develop)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/?branch=develop)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/?branch=develop)
+[![Build Status](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/build.png?b=master)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/build-status/master)
+[![Code Coverage](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/linkeys-app/signed-url/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/linkeys-app/signed-url/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/linkeys/signed-url.svg)](https://packagist.org/packages/linkeys/signed-url)
 [![Licence](https://img.shields.io/packagist/l/linkeys/signed-url.svg)](https://packagist.org/packages/linkeys/signed-url)
 

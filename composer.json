@@ -1,6 +1,6 @@
 {
     "name": "linkeys/signed-url",
-    "description": "Allows for the generation of expiring links with limited numbers of click",
+    "description": "Enhanced signed URLs for Laravel, including attaching data, click limits and expiry.",
     "keywords": [
 	"signed",
 	"url",

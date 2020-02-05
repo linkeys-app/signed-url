@@ -42,7 +42,10 @@ class UrlSignerServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__.'/../../database/migrations/' => database_path('migrations')
         ], 'migrations');
-
+	
+        $this->mergeConfigFrom(
+            __DIR__.'/../../config/links.php', 'links'
+        );
         $this->loadMigrationsFrom(__DIR__.'/../../database/migrations');
 
         $this->app['router']->middlewareGroup('link', [

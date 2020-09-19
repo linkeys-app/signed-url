@@ -8,11 +8,12 @@ use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Linkeys\UrlSigner\Models\Group;
 use Linkeys\UrlSigner\Models\Link;
 use Linkeys\UrlSigner\Providers\UrlSignerServiceProvider;
+use Prophecy\PhpUnit\ProphecyTrait;
 
 class TestCase extends \Orchestra\Testbench\TestCase
 {
 
-    use DatabaseTransactions;
+    use DatabaseTransactions, ProphecyTrait;
 
     /**
      * @var Factory

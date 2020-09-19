@@ -20,21 +20,21 @@
     ],
     "require": {
         "php": "^7.2",
-        "ramsey/uuid": "^3.8",
-        "laravel/framework": "^7.0",
+        "ramsey/uuid": "^4.0",
+        "laravel/framework": "^8.0",
         "nesbot/carbon": "^2.17",
         "spatie/url": "^1.3"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "orchestra/testbench": "^5.0"
+        "phpunit/phpunit": "^9.0",
+        "orchestra/testbench": "^6.0",
+        "laravel/legacy-factories": "^1.0",
+        "phpspec/prophecy-phpunit": "^2.0"
     },
     "autoload": {
-        "classmap": [
-            "database/factories"
-        ],
         "psr-4": {
-            "Linkeys\\UrlSigner\\": "src/"
+            "Linkeys\\UrlSigner\\": "src/",
+            "Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {

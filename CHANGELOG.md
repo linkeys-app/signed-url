@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - (19/09/2020)
+
+### Changed
+- Added Laravel 8 support
+- Removed Laravel 7 support
+
 ## [2.0.0] - (02/05/2020)
 
 ### Changed

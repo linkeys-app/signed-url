@@ -1,5 +1,7 @@
 <?php
 
+namespace Database\Factories;
+
 $factory->define(\Linkeys\UrlSigner\Models\Link::class, function(\Faker\Generator $faker) {
     return [
         'url' => $faker->url,

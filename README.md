@@ -13,6 +13,7 @@
 ## Table of Contents
 
 * [Introduction](#introduction)
+* [Version Compatibility](#version-compatibility)
 * [Getting Started](#getting-started)
     * [Installation](#installation)
 * [Usage](#usage)
@@ -31,6 +32,16 @@ Revamped URL signing brought to Laravel. Pass data through any url securely, and
 - Create links of a limited lifetime.
 - Limit the number of clicks allowed on a link.
 - Limit the number of clicks on a group of links, such as only allowing one of a group of links to be clicked.
+
+## Version Compatibility
+
+
+ Laravel  | Url Signer
+:---------|:----------
+ 5.7.x    | 1.0.x
+ 5.8.x    | 1.0.x
+ 6.x      | 1.0.3|2.0.x
+ 7.x      | 2.0.x
 
 ## Getting Started
 

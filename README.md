@@ -42,6 +42,7 @@ Revamped URL signing brought to Laravel. Pass data through any url securely, and
  5.8.x    | 1.0.x
  6.x      | 1.0.3|2.0.x
  7.x      | 2.0.x
+ 8.x      | 3.0.x
 
 ## Getting Started
 
@@ -82,7 +83,7 @@ The easiest way to create a link is through the facade:
 
 ```php 
 $link = \Linkeys\UrlSigner\Facade\UrlSigner::generate('https://www.example.com/invitation');
-echo $link; // https://www.example.com/invitation?uuid=UUID
+echo $link->getFullUrl(); // https://www.example.com/invitation?uuid=UUID
 ```
 
 The link can now be sent out or used just like normal signed URLs. You may also use the sign method, 
@@ -98,7 +99,7 @@ Instead of encoding data into the url yourself, simply pass it as the second arg
 
 ```php 
 $link = \Linkeys\UrlSigner\Facade\UrlSigner::generate('https://www.example.com/invitation', ['foo' => 'bar']);
-echo $link; // https://www.example.com/invitation?uuid=UUID
+echo $link->getFullUrl(); // https://www.example.com/invitation?uuid=UUID
 ```
 In your controller, e.g. InvitationController.php
 ```php

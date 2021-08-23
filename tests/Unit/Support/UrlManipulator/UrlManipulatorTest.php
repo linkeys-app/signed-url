@@ -99,6 +99,14 @@ class UrlManipulatorTest extends TestCase
         $this->assertEquals('https://example.com?foo=bar', $urlInterface->getUrl());
     }
 
+    /** @test */
+    public function url_manipulator_keeps_the_protocol_intact_after_removing_a_query(){
+        $urlInterface = new SpatieUrlManipulator;
+        $urlInterface->setUrl('https://example.com?q=123&v=444');
+        $urlInterface->removeQuery('q');
+        $this->assertEquals('https://example.com?v=444', $urlInterface->getUrl());
+    }
+
 }
 
 

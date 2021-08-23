@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.2] - (23/08/2021)
+
+### Fixed
+- Fixed alias to route to the facade
+
 ## [3.0.1] - (12/01/2020)
 
 ### Removed

@@ -43,6 +43,8 @@ Revamped URL signing brought to Laravel. Pass data through any url securely, and
  6.x      | 1.0.3|2.0.x
  7.x      | 2.0.x
  8.x      | 3.0.x
+ 9.x      | 4.0.x
+ 10.x     | 5.0.x
 
 ## Getting Started
 

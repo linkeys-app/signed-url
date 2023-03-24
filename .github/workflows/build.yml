@@ -1,98 +1,78 @@
-name: Build and run tests
+name: Run automated test suite
 
 on:
     push:
     pull_request:
 
 jobs:
-    build_php74:
-
+    phpunit-tests:
+        strategy:
+            matrix:
+                php: [ '8.1', '8.2' ]
+                laravel: [ '9.*', '10.*' ]
+                include:
+                    - laravel: 9.*
+                      testbench: 7.*
+                    - laravel: 10.*
+                      testbench: 8.*
         runs-on: ubuntu-latest
+        if: "!contains(github.event.head_commit.message, '[CI]')"
+        name: "PHP ${{matrix.php}} tests - Laravel ${{matrix.laravel}}"
 
         steps:
-            - uses: actions/checkout@v2
+            - name: ⏳ Check out repository
+              uses: actions/checkout@v2
+              with:
+                  ref: ${{ github.ref }}
 
-            - name: Setup PHP 7.4
+            - name: ⏳ Cancel Previous Runs
+              uses: styfle/cancel-workflow-action@0.10.1
+
+            - name: ⏳ Setup PHP
               uses: shivammathur/setup-php@v2
               with:
-                  php-version: '7.4'
+                  php-version: ${{ matrix.php }}
 
-            - name: Validate composer.json and composer.lock
-              run: composer validate
-
-            - name: Cache Composer packages
+            - name: ⏳ Cache Composer packages
               id: composer-cache
               uses: actions/cache@v2
               with:
                   path: vendor
-                  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-php-
+                  key: ${{ runner.os }}-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
-            - name: Install dependencies
+            - name: ⏳ Install PHP dependencies
               if: steps.composer-cache.outputs.cache-hit != 'true'
-              run: composer install --prefer-dist --no-progress --no-suggest
+              run: |
+                  composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+                  composer update --prefer-dist --no-interaction
 
-            - name: Run test suite
-              run: composer run-script test
+            - name: 🔎 Run test suite
+              run: ./vendor/bin/phpunit --coverage-clover ci/phpunit/clover.xml --coverage-html ci/phpunit/html --log-junit ci/phpunit/junit.xml --colors=always --process-isolation --verbose --configuration phpunit.xml
 
-    build_php8:
-
-        runs-on: ubuntu-latest
-
-        steps:
-            - uses: actions/checkout@v2
-
-            - name: Setup PHP 8.0
-              uses: shivammathur/setup-php@v2
+            - name: 💾 Upload test coverage
+              uses: actions/upload-artifact@v3
               with:
-                  php-version: '8.0'
+                  name: test-coverage
+                  path: ci/phpunit/html
 
-            - name: Validate composer.json and composer.lock
-              run: composer validate
-
-            - name: Cache Composer packages
-              id: composer-cache
-              uses: actions/cache@v2
+            - name: 📋 Check test coverage
+              uses: johanvanhelden/gha-clover-test-coverage-check@v1
+              id: coverage
               with:
-                  path: vendor
-                  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-php-
+                  percentage: "50"
+                  filename: ci/phpunit/clover.xml
+                  rounded-precision: "0"
+                  exit: false
 
-            - name: Install dependencies
-              if: steps.composer-cache.outputs.cache-hit != 'true'
-              run: composer install --prefer-dist --no-progress --no-suggest
-
-            - name: Run test suite
-              run: composer run-script test
-    build_php8_1:
-
-        runs-on: ubuntu-latest
-
-        steps:
-            - uses: actions/checkout@v2
-
-            - name: Setup PHP 8.1
-              uses: shivammathur/setup-php@v2
+            - name: 📋 Publish Test Report
+              uses: mikepenz/action-junit-report@v3
+              if: always() # always run even if the previous step fails
               with:
-                  php-version: '8.1'
+                  report_paths: 'ci/phpunit/junit.xml'
 
-            - name: Validate composer.json and composer.lock
-              run: composer validate
-
-            - name: Cache Composer packages
-              id: composer-cache
-              uses: actions/cache@v2
+            - name: 💾 Upload test summary
+              uses: actions/upload-artifact@v3
               with:
-                  path: vendor
-                  key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: |
-                      ${{ runner.os }}-php-
-
-            - name: Install dependencies
-              if: steps.composer-cache.outputs.cache-hit != 'true'
-              run: composer install --prefer-dist --no-progress --no-suggest
-
-            - name: Run test suite
-              run: composer run-script test
+                  name: summary
+                  path: "ci/phpunit/summary.md"
+              if: always()

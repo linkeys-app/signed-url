@@ -21,7 +21,7 @@
     "require": {
         "php": "^8.0",
         "ramsey/uuid": "^4.0",
-        "laravel/framework": "^9.0|^10.0",
+        "laravel/framework": "^9.0|^10.0|^11.0",
         "nesbot/carbon": "^2.17",
         "spatie/url": "^2.0"
     },

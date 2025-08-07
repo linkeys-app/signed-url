@@ -35,7 +35,7 @@ jobs:
 
             - name: ⏳ Cache Composer packages
               id: composer-cache
-              uses: actions/cache@v2
+              uses: actions/cache@v4
               with:
                   path: vendor
                   key: ${{ runner.os }}-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}

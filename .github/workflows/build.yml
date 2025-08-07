@@ -52,8 +52,8 @@ jobs:
             - name: 💾 Prepare sanitized artifact variables
               id: sanitize
               run: |
-                echo "SANITIZED_LARAVEL=$(echo \"${{ matrix.laravel }}\" | tr -d '*')" >> $GITHUB_ENV
-                echo "SANITIZED_TESTBENCH=$(echo \"${{ matrix.testbench }}\" | tr -d '*')" >> $GITHUB_ENV
+                echo "SANITIZED_LARAVEL=$(echo ${{ matrix.laravel }} | tr -d '*')" >> $GITHUB_ENV
+                echo "SANITIZED_TESTBENCH=$(echo ${{ matrix.testbench }} | tr -d '*')" >> $GITHUB_ENV
 
             - name: 💾 Upload test coverage
               uses: actions/upload-artifact@v4

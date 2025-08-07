@@ -71,7 +71,7 @@ jobs:
                   report_paths: 'ci/phpunit/junit.xml'
 
             - name: 💾 Upload test summary
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                   name: summary
                   path: "ci/phpunit/summary.md"

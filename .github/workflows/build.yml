@@ -50,7 +50,7 @@ jobs:
               run: ./vendor/bin/phpunit --coverage-clover ci/phpunit/clover.xml --coverage-html ci/phpunit/html --log-junit ci/phpunit/junit.xml --colors=always --process-isolation --verbose --configuration phpunit.xml
 
             - name: 💾 Upload test coverage
-              uses: actions/upload-artifact@v3
+              uses: actions/upload-artifact@v4
               with:
                   name: test-coverage
                   path: ci/phpunit/html

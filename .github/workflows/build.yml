@@ -52,7 +52,7 @@ jobs:
             - name: 💾 Upload test coverage
               uses: actions/upload-artifact@v4
               with:
-                  name: test-coverage-php${{ matrix.php }}-laravel${{ matrix.laravel }}-testbench${{ matrix.testbench }}
+                  name: test-coverage-php${{ matrix.php }}-laravel${{ matrix.laravel | tr -d '*' }}-testbench${{ matrix.testbench | tr -d '*' }}
                   path: ci/phpunit/html
 
             - name: 📋 Check test coverage
@@ -73,6 +73,6 @@ jobs:
             - name: 💾 Upload test summary
               uses: actions/upload-artifact@v4
               with:
-                  name: summary-php${{ matrix.php }}-laravel${{ matrix.laravel }}-testbench${{ matrix.testbench }}
+                  name: summary-php${{ matrix.php }}-laravel${{ matrix.laravel | tr -d '*' }}-testbench${{ matrix.testbench | tr -d '*' }}
                   path: "ci/phpunit/summary.md"
               if: always()

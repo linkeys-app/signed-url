@@ -52,13 +52,13 @@ jobs:
             - name: 💾 Prepare sanitized artifact variables
               id: sanitize
               run: |
-                echo "SANITIZED_LARAVEL=$(echo ${{ matrix.laravel }} | tr -d '*')" >> $GITHUB_ENV
-                echo "SANITIZED_TESTBENCH=$(echo ${{ matrix.testbench }} | tr -d '*')" >> $GITHUB_ENV
+                echo "laravel=$(echo ${{ matrix.laravel }} | tr -d '*')" >> $GITHUB_OUTPUT
+                echo "testbench=$(echo ${{ matrix.testbench }} | tr -d '*')" >> $GITHUB_OUTPUT
 
             - name: 💾 Upload test coverage
               uses: actions/upload-artifact@v4
               with:
-                  name: test-coverage-php${{ matrix.php }}-laravel${{ env.SANITIZED_LARAVEL }}-testbench${{ env.SANITIZED_TESTBENCH }}
+                  name: test-coverage-php${{ matrix.php }}-laravel${{ steps.sanitize.outputs.laravel }}-testbench${{ steps.sanitize.outputs.laravel }}
                   path: ci/phpunit/html
 
             - name: 📋 Check test coverage
@@ -79,6 +79,6 @@ jobs:
             - name: 💾 Upload test summary
               uses: actions/upload-artifact@v4
               with:
-                  name: summary-php${{ matrix.php }}-laravel${{ env.SANITIZED_LARAVEL }}-testbench${{ env.SANITIZED_TESTBENCH }}
+                  name: summary-php${{ matrix.php }}-laravel${{ steps.sanitize.outputs.laravel }}-testbench${{ steps.sanitize.outputs.laravel }}
                   path: "ci/phpunit/summary.md"
               if: always()

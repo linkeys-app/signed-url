@@ -4,6 +4,7 @@ namespace Linkeys\UrlSigner\Providers;
 
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
+use Linkeys\UrlSigner\Commands\PruneLinksCommand;
 use Linkeys\UrlSigner\Contracts\UrlSigner as UrlSignerContract;
 use Linkeys\UrlSigner\Contracts\Models\Group as GroupContract;
 use Linkeys\UrlSigner\Contracts\Models\Link as LinkContract;
@@ -34,7 +35,6 @@ class UrlSignerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-
         $this->publishes([
             __DIR__.'/../../config/links.php' => config_path('links.php')
         ], 'config');
@@ -76,6 +76,10 @@ class UrlSignerServiceProvider extends ServiceProvider
         $this->app->instance(NormaliserManagerContract::class, $normaliserManager);
 
         $this->mergeConfigFrom(__DIR__.'/../../config/links.php', config_path('links.php'));
+
+        $this->commands([
+            PruneLinksCommand::class
+        ]);
     }
 
 }

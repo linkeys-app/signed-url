@@ -20,6 +20,7 @@
     * [Overview](#overview)
     * [Creating a Link](#creating-a-link)
     * [Handling a Link](#handling-a-link)
+    * [Pruning Links](#pruning-links)
 * [Examples](#examples)
 * [Licence](#license)
 * [Contact](#contact)
@@ -204,6 +205,20 @@ have a single page for all link exceptions. The inheritance diagram is shown bel
 being in the namespace ```\Linkeys\UrlSigner\Exceptions``` except for ```\Exception```.
 
 ![Exception Inheritance](exceptions.png)
+
+### Pruning Links
+
+To keep the database clean and tidy, you can use the ```prune``` method to delete links that have expired or have 
+been clicked at least once.
+
+```bash
+php artisan signed-url:prune --expired
+php artisan signed-url:prune --used
+```
+
+The ```--expired``` option will delete links that have expired. The ```--used``` option will delete links that have been clicked at least once.
+
+You should consider adding these to your schedule so that they run on a regular basis.
 
 ## Examples
 

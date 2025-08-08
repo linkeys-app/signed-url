@@ -24,20 +24,20 @@ class EloquentLinkRepositoryTest extends TestCase
         $this->linkRepository = new EloquentLinkRepository(new Link);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_finds_a_link_model_by_uuid(){
         $link = factory(Link::class)->create();
         $repositoryLink = $this->linkRepository->findByUuid($link->uuid);
         $this->assertTrue($link->is($repositoryLink));
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_a_model_not_found_exception_when_uuid_not_found(){
         $this->expectException(ModelNotFoundException::class);
         $this->linkRepository->findByUuid('does-not-exist');
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_saves_a_model(){
         $link = factory(Link::class)->create();
         $link->url = 'updated_url';
@@ -46,7 +46,7 @@ class EloquentLinkRepositoryTest extends TestCase
         $this->assertDatabaseHas(config('links.tables.links'), ['url' => 'updated_url']);
     }
     
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_creates_and_returns_model(){
 
         $attributes = [

@@ -10,7 +10,7 @@ class LinkFacadeTest extends TestCase
 {
 
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_calls_the_generate_function(){
 
         $linkGenerator = $this->prophesize(UrlSignerContract::class);

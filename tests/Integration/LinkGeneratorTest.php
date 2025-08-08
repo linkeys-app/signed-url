@@ -28,7 +28,7 @@ class LinkGeneratorTest extends TestCase
         );
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function link_can_be_generated()
     {
         $url = 'https://example.com';
@@ -37,7 +37,7 @@ class LinkGeneratorTest extends TestCase
         $this->assertStringContainsString($url, $link->url);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function links_are_stored_in_the_database()
     {
         $link = $this->links->generate('https://example.com');
@@ -45,7 +45,7 @@ class LinkGeneratorTest extends TestCase
         $this->assertDatabaseHas(config('links.tables.links'), ['id' => $link->id]);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function sign_can_be_used_as_an_alias(){
         $link = $this->links->sign('https://example.com');
 
@@ -53,7 +53,7 @@ class LinkGeneratorTest extends TestCase
 
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function group_is_created_in_database()
     {
         $group = $this->links->group(function () {
@@ -63,7 +63,7 @@ class LinkGeneratorTest extends TestCase
         $this->assertDatabaseHas(config('links.tables.groups'), $group->toArray());
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function links_can_be_created_in_the_callback()
     {
         $group = $this->links->group(function (UrlSigner $linkGenerator) {
@@ -77,7 +77,7 @@ class LinkGeneratorTest extends TestCase
         ]);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_creates_links_tied_to_groups()
     {
         $group = $this->links->group(function(UrlSigner $link) {

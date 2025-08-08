@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class AddLinkToRequestTest extends TestCase
 {
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_retrieves_a_link_from_the_repository()
     {
         $uuid = '7575-dffd-23f3-sdda-23d3-grr4';
@@ -30,7 +30,7 @@ class AddLinkToRequestTest extends TestCase
         $this->assertInstanceOf(Link::class, $foundLink);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_a_link_not_found_exception_if_the_repository_throws_a_model_not_found_exception()
     {
         $uuid = '7575-dffd-23f3-sdda-23d3-grr4';

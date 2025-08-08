@@ -8,7 +8,7 @@ use Linkeys\UrlSigner\Tests\TestCase;
 class RamseyUuidCreatorTest extends TestCase
 {
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_generates_a_uuid()
     {
         $uuidCreator = new RamseyUuidCreator;

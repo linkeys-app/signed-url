@@ -9,7 +9,7 @@ use Linkeys\UrlSigner\Tests\TestCase;
 class FromDateTimeTest extends TestCase
 {
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_converts_a_string_to_a_datetime(){
         $expiry = Carbon::now();
         $fromDateTime = new FromDateTime();

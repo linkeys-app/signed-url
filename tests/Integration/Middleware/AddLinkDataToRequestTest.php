@@ -13,7 +13,7 @@ use Linkeys\UrlSigner\Tests\TestCase;
 
 class AddLinkDataToRequestTest extends TestCase
 {
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_merges_link_data_into_a_request_attribute(){
         $link = factory(Link::class)->create(['url' => 'https://www.example.com/invitation', 'data' => ['foo' => 'bar']]);
         $request = new Request(

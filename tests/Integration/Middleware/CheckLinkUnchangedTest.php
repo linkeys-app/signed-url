@@ -21,7 +21,7 @@ class CheckLinkUnchangedTest extends TestCase
         return $request;
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_throws_a_link_not_found_exception_if_the_url_is_different_to_that_in_the_database(){
         $link = factory(Link::class)->create(['url' => 'https://www.example.com/invitation?foo=bar']);
 
@@ -36,7 +36,7 @@ class CheckLinkUnchangedTest extends TestCase
 
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_passes_if_the_url_is_equal_to_the_link_url(){
         $link = factory(Link::class)->create(['url' => 'https://www.example.com/invitation?foo=bar']);
 

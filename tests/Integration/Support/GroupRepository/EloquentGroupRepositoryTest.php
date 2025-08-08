@@ -23,7 +23,7 @@ class EloquentGroupRepositoryTest extends TestCase
         $this->groupRepository = new EloquentGroupRepository(new Group);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_creates_and_returns_model(){
 
         $attributes = [
@@ -40,7 +40,7 @@ class EloquentGroupRepositoryTest extends TestCase
         $this->assertDatabaseHas(config('links.tables.groups'), ['id' => $group->id]);
     }
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_attaches_a_link_to_a_group(){
         $link = factory(Link::class)->create();
         $group = factory(Group::class)->create();

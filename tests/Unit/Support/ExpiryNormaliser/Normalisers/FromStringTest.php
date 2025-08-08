@@ -8,7 +8,7 @@ use Linkeys\UrlSigner\Tests\TestCase;
 class FromStringTest extends TestCase
 {
 
-    /** @test */
+    #[\PHPUnit\Framework\Attributes\Test]
     public function it_converts_a_string_to_a_datetime(){
         $expiry = 'now';
         $fromString = new FromString();

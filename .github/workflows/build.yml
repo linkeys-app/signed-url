@@ -47,7 +47,7 @@ jobs:
                   composer update --prefer-dist --no-interaction
 
             - name: 🔎 Run test suite
-              run: ./vendor/bin/phpunit --coverage-clover ci/phpunit/clover.xml --coverage-html ci/phpunit/html --log-junit ci/phpunit/junit.xml --colors=always --process-isolation --verbose --configuration phpunit.xml
+              run: ./vendor/bin/phpunit --coverage-clover ci/phpunit/clover.xml --coverage-html ci/phpunit/html --log-junit ci/phpunit/junit.xml --colors=always --process-isolation --configuration phpunit.xml
 
             - name: 💾 Prepare sanitized artifact variables
               id: sanitize

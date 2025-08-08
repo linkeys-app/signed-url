@@ -4,7 +4,7 @@ namespace Linkeys\UrlSigner\Tests;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factory;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Linkeys\UrlSigner\Models\Group;
 use Linkeys\UrlSigner\Models\Link;
 use Linkeys\UrlSigner\Providers\UrlSignerServiceProvider;
@@ -13,7 +13,7 @@ use Prophecy\PhpUnit\ProphecyTrait;
 class TestCase extends \Orchestra\Testbench\TestCase
 {
 
-    use DatabaseTransactions, ProphecyTrait;
+    use RefreshDatabase, ProphecyTrait;
 
     /**
      * @var Factory

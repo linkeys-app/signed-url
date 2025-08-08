@@ -11,7 +11,7 @@ use Linkeys\UrlSigner\Support\LinkRepository\EloquentLinkRepository;
 use Linkeys\UrlSigner\Support\UrlManipulator\SpatieUrlManipulator;
 use Linkeys\UrlSigner\Tests\TestCase;
 
-class UrlSignerTest extends TestCase
+class LinkGeneratorTest extends TestCase
 {
 
     /** @var UrlSigner */

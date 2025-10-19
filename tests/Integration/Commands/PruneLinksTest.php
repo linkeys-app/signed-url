@@ -1,6 +1,6 @@
 <?php
 
-namespace Integration\Commands;
+namespace Linkeys\UrlSigner\Tests\Integration\Commands;
 
 use Linkeys\UrlSigner\Models\Group;
 use Linkeys\UrlSigner\Models\Link;
@@ -43,6 +43,22 @@ class PruneLinksTest extends TestCase
             ->assertExitCode(0);
 
         $this->assertDatabaseCount('links', 2);
+    }
+
+    #[\PHPUnit\Framework\Attributes\Test]
+    public function it_does_not_delete_any_partially_used_links_with_clicks_remaining() {
+        $link1 = factory(Link::class)->create(['clicks' => 2, 'click_limit' => null]);
+        $link1 = factory(Link::class)->create(['clicks' => 2, 'click_limit' => 1]);
+        $link2 = factory(Link::class)->create(['clicks' => 2, 'click_limit' => 2]);
+        $link2 = factory(Link::class)->create(['clicks' => 2, 'click_limit' => 3]);
+
+        $this->assertDatabaseCount('links', 4);
+
+        $this->artisan('signed-url:prune --used-fully')
+            ->expectsOutput('Pruning 3 used links')
+            ->assertExitCode(0);
+
+        $this->assertDatabaseCount('links', 1);
     }
 
     #[\PHPUnit\Framework\Attributes\Test]

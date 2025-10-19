@@ -214,9 +214,13 @@ been clicked at least once.
 ```bash
 php artisan signed-url:prune --expired
 php artisan signed-url:prune --used
+php artisan signed-url:prune --used-fully
 ```
 
-The ```--expired``` option will delete links that have expired. The ```--used``` option will delete links that have been clicked at least once.
+The ```--expired``` option will delete links that have expired. The ```--used``` option will delete links that have 
+been clicked at least once. The `--used-fully` option may take longer to run, but will delete links that have been 
+clicked equal or more than their click limit, or are in groups which have been clicked equal or more than their 
+group click limit.
 
 You should consider adding these to your schedule so that they run on a regular basis.
 

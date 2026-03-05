@@ -1,84 +1,92 @@
 name: Run automated test suite
 
 on:
-    push:
-    pull_request:
+  push:
+  pull_request:
 
 jobs:
-    phpunit-tests:
-        strategy:
-            matrix:
-                php: [ '8.2', '8.3', '8.4' ]
-                laravel: [ '11.*', '12.*' ]
-                include:
-                    - laravel: 11.*
-                      testbench: 9.*
-                    - laravel: 12.*
-                      testbench: 10.*
-        runs-on: ubuntu-latest
-        if: "!contains(github.event.head_commit.message, '[CI]')"
-        name: "PHP ${{matrix.php}} tests - Laravel ${{matrix.laravel}}"
+  phpunit-tests:
+    strategy:
+      matrix:
+        php: ['8.2', '8.3', '8.4']
+        laravel: ['11.*', '12.*', '13.*']
+        include:
+          - laravel: 11.*
+            testbench: 9.*
+          - laravel: 12.*
+            testbench: 10.*
+          - laravel: 13.*
+            testbench: 11.*
+        exclude:
+          - laravel: 13.*
+            php: '8.2'
 
-        steps:
-            - name: ⏳ Check out repository
-              uses: actions/checkout@v2
-              with:
-                  ref: ${{ github.ref }}
+    runs-on: ubuntu-latest
 
-            - name: ⏳ Cancel Previous Runs
-              uses: styfle/cancel-workflow-action@0.10.1
+    if: !contains(github.event.head_commit.message, '[CI]')
 
-            - name: ⏳ Setup PHP
-              uses: shivammathur/setup-php@v2
-              with:
-                  php-version: ${{ matrix.php }}
+    name: PHP ${{matrix.php}} tests - Laravel ${{matrix.laravel}}
 
-            - name: ⏳ Cache Composer packages
-              id: composer-cache
-              uses: actions/cache@v4
-              with:
-                  path: vendor
-                  key: ${{ runner.os }}-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
+    steps:
+      - name: ⏳ Check out repository
+        uses: actions/checkout@v2
+        with:
+          ref: ${{ github.ref }}
 
-            - name: ⏳ Install PHP dependencies
-              if: steps.composer-cache.outputs.cache-hit != 'true'
-              run: |
-                  composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
-                  composer update --prefer-dist --no-interaction
+      - name: ⏳ Cancel Previous Runs
+        uses: styfle/cancel-workflow-action@0.10.1
 
-            - name: 🔎 Run test suite
-              run: ./vendor/bin/phpunit --coverage-clover ci/phpunit/clover.xml --coverage-html ci/phpunit/html --log-junit ci/phpunit/junit.xml --colors=always --process-isolation --configuration phpunit.xml
+      - name: ⏳ Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
 
-            - name: 💾 Prepare sanitized artifact variables
-              id: sanitize
-              run: |
-                echo "laravel=$(echo ${{ matrix.laravel }} | tr -d '*')" >> $GITHUB_OUTPUT
-                echo "testbench=$(echo ${{ matrix.testbench }} | tr -d '*')" >> $GITHUB_OUTPUT
+      - name: ⏳ Cache Composer packages
+        id: composer-cache
+        uses: actions/cache@v4
+        with:
+          path: vendor
+          key: ${{ runner.os }}-laravel-${{ matrix.laravel }}-php-${{ matrix.php }}-composer-${{ hashFiles('composer.json') }}
 
-            - name: 💾 Upload test coverage
-              uses: actions/upload-artifact@v4
-              with:
-                  name: test-coverage-php${{ matrix.php }}-laravel${{ steps.sanitize.outputs.laravel }}-testbench${{ steps.sanitize.outputs.laravel }}
-                  path: ci/phpunit/html
+      - name: ⏳ Install PHP dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: |
+          composer require "laravel/framework:${{ matrix.laravel }}" "orchestra/testbench:${{ matrix.testbench }}" --no-interaction --no-update
+          composer update --prefer-dist --no-interaction
 
-            - name: 📋 Check test coverage
-              uses: johanvanhelden/gha-clover-test-coverage-check@v1
-              id: coverage
-              with:
-                  percentage: "50"
-                  filename: ci/phpunit/clover.xml
-                  rounded-precision: "0"
-                  exit: false
+      - name: 🔎 Run test suite
+        run: ./vendor/bin/phpunit --coverage-clover ci/phpunit/clover.xml --coverage-html ci/phpunit/html --log-junit ci/phpunit/junit.xml --colors=always --process-isolation --configuration phpunit.xml
 
-            - name: 📋 Publish Test Report
-              uses: mikepenz/action-junit-report@v3
-              if: always() # always run even if the previous step fails
-              with:
-                  report_paths: 'ci/phpunit/junit.xml'
+      - name: 💾 Prepare sanitized artifact variables
+        id: sanitize
+        run: |
+          echo "laravel=$(echo ${{ matrix.laravel }} | tr -d '*')" >> $GITHUB_OUTPUT
+          echo "testbench=$(echo ${{ matrix.testbench }} | tr -d '*')" >> $GITHUB_OUTPUT
 
-            - name: 💾 Upload test summary
-              uses: actions/upload-artifact@v4
-              with:
-                  name: summary-php${{ matrix.php }}-laravel${{ steps.sanitize.outputs.laravel }}-testbench${{ steps.sanitize.outputs.laravel }}
-                  path: "ci/phpunit/summary.md"
-              if: always()
+      - name: 💾 Upload test coverage
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-coverage-php${{ matrix.php }}-laravel${{ steps.sanitize.outputs.laravel }}-testbench${{ steps.sanitize.outputs.laravel }}
+          path: ci/phpunit/html
+
+      - name: 📋 Check test coverage
+        uses: johanvanhelden/gha-clover-test-coverage-check@v1
+        id: coverage
+        with:
+          percentage: '50'
+          filename: ci/phpunit/clover.xml
+          rounded-precision: '0'
+          exit: false
+
+      - name: 📋 Publish Test Report
+        uses: mikepenz/action-junit-report@v3
+        if: always()
+        with:
+          report_paths: ci/phpunit/junit.xml
+
+      - name: 💾 Upload test summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: summary-php${{ matrix.php }}-laravel${{ steps.sanitize.outputs.laravel }}-testbench${{ steps.sanitize.outputs.laravel }}
+          path: ci/phpunit/summary.md
+        if: always()
